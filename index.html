@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ahmed Abdel ALIM - UI/UX Designer Portfolio">
+    <title>Ahmed Abdel ALIM - UI/UX Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary-color: #7510F7;
+            --secondary-color: #5B21B6;
+            --text-primary: #2D3748;
+            --text-secondary: #4A5568;
+            --bg-primary: #ffffff;
+            --bg-secondary: #F7FAFC;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+        }
+
+        .header-description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(117, 16, 247, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: auto;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-speed) ease;
+            margin-top: 1rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header data-aos="fade-down">
+        <div class="container">
+            <div class="header-content">
+                <h1>Ahmed Abdel ALIM</h1>
+                <h2>UI/UX DESIGNER</h2>
+                <p class="header-description">
+                    UI/UX Designer with over 4 years of experience in creating user-friendly and visually engaging interfaces. 
+                    Skilled in Figma, and Adobe XD with strong user research and prototyping abilities. 
+                    Passionate about enhancing user experiences and solving complex design challenges.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#education" class="nav-link">Education</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Contact</h2>
+                <div class="contact-info" data-aos="fade-up">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>0100 251 2011</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>Ahmed.alim4034@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Shoubra, Cairo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links" data-aos="fade-up">
+                    <a href="https://www.linkedin.com/in/ahmed-alim-b5a854199/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.behance.net/ahmedalim3" target="_blank" class="social-link">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Experience</h2>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">UI/UX Designer</h3>
+                    <p class="experience-company">EXAS Company | April 2023 - Present</p>
+                </div>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">UI/UX Designer</h3>
+                    <p class="experience-company">Concrete Company | April 2021 - March 2023</p>
+                </div>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">Vodafone Store Team Leader</h3>
+                    <p class="experience-description">
+                        Developed strong negotiation and customer service skills through daily customer interactions and team management.
+                    </p>
+                </div>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">Customer Service</h3>
+                    <p class="experience-company">EG BANK | January 2019 - June 2019</p>
+                    <p class="experience-description">
+                        Gained fundamental professional skills and customer service experience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card" data-aos="fade-up">
+                        <i class="fab fa-figma"></i>
+                        <h3>Figma</h3>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up">
+                        <i class="fab fa-adobe"></i>
+                        <h3>Adobe XD</h3>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Photoshop</h3>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up">
+                        <i class="fas fa-video"></i>
+                        <h3>Filmora</h3>
+                    </div>
+                    <div class="skill-card" data-aos="fade-up">
+                        <i class="fas fa-video"></i>
+                        <h3>Camtasia</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Zeyara</h3>
+                            <p class="project-description">An app that provides religious trips</p>
+                            <a href="https://www.figma.com/design/AHR6rP45TlqdCOHPqdzGBX/Zyara?node-id=0-1&t=jgyOO9sE5nYUrkwd-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">AL Sunnah</h3>
+                            <p class="project-description">An app dedicated to gathering all the sayings of Prophet Muhammad</p>
+                            <a href="https://www.figma.com/design/KJEa50oMLPd6Og87VrRzZJ/%D8%AC%D8%A7%D9%85%D8%B9-%D8%AE%D8%A7%D8%AF%D9%85-%D8%A7%D9%84%D8%AD%D8%B1%D9%85%D9%8A%D9%86-%D8%A7%D9%84%D8%B4%D8%B1%D9%8A%D9%81%D9%8A%D9%86-%D8%A7%D9%84%D8%B3%D9%86%D8%A9-%D8%A7%D9%84%D9%86%D8%A8%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B7%D9%87%D8%B1%D8%A9?node-id=0-1&t=iSQVbspoXA89Rcue-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Coop</h3>
+                            <p class="project-description">An app designed to provide healthy and balanced meals for children in schools</p>
+                            <a href="https://www.figma.com/design/alr0QGP8y04Nbaywgh4u14/Coop?node-id=0-1&t=yq6hzPO2DatkDm9d-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Refeezy</h3>
+                            <p class="project-description">Super Gift Rooms</p>
+                            <a href="https://www.figma.com/design/T0nWLpfWXC6452ZAstO0m8/Refeezy?node-id=0-1&t=2KYJG82Av9JPAo4y-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Hafawa</h3>
+                            <p class="project-description">Event Organizer</p>
+                            <a href="https://www.figma.com/design/1PPUNRNZuxYlIVyFQYr8dS/HAFAWA?node-id=85-12610&t=otfNKDOV4xDY4p5J-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Soquna</h3>
+                            <p class="project-description">E-commerce</p>
+                            <a href="https://www.figma.com/design/hETRie1MRdrNoK3ltLuOkz/Soquna?node-id=307-20773&t=4mkv78l0FfywiOfm-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">CAREK</h3>
+                            <p class="project-description">Car washing and services</p>
+                            <a href="https://www.figma.com/design/qPnV8AAwKwkOdBriT98l6f/Carek?node-id=0-1&t=rcIdu7AnAENcvPT0-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Logisteam</h3>
+                            <p class="project-description">For Bargains</p>
+                            <a href="https://www.figma.com/design/WFJPnZ7xjMtmFPxrFmQblK/Logissteam?node-id=0-1&t=pqsDVIwGm9ODWg6a-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Fann</h3>
+                            <p class="project-description">For car services</p>
+                            <a href="https://www.figma.com/design/eRIfk08ayxymYJkTl1flNL/Fann?node-id=0-1&t=MrK32rx2Y3ZDlVYR-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Yamluck</h3>
+                            <p class="project-description">E-commerce</p>
+                            <a href="https://www.figma.com/design/uVpMhpm4aeVKpZnSAlyATE/Yamluck?node-id=0-1&t=dOzHPnA7D6oft8L3-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Bunny Box</h3>
+                            <p class="project-description">E-commerce</p>
+                            <a href="https://www.figma.com/design/hhEe3zkijg4Vptk2nloS9X/Bunny-Boxx?node-id=0-1&t=iTOSI5ML5mkWWq47-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-aos="fade-up">
+                        <div class="project-content">
+                            <h3 class="project-title">Funday</h3>
+                            <p class="project-description">Kids Nursery</p>
+                            <a href="https://www.figma.com/design/0aprWBnGrIgOAVVZHugPdV/Fun-Day?node-id=0-1&t=aifEO7CKDhjgDK9q-1" target="_blank" class="project-link">View Design</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Education</h2>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">Bachelor of Arts - English Department</h3>
+                    <p class="experience-company">Graduated June 2017</p>
+                </div>
+                <div class="experience-item" data-aos="fade-up">
+                    <h3 class="experience-title">Graphic Design Course</h3>
+                    <p class="experience-company">RCC</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
