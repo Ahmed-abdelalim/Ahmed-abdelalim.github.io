@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ahmed Abdel ALIM - UI/UX Designer Portfolio">
-    <title>Ahmed Abdel ALIM - UI/UX Designer</title>
+    <title>Ahmed Abdel ALIM</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         :root {
-            --primary-color: #7510F7;
-            --secondary-color: #5B21B6;
-            --text-primary: #2D3748;
-            --text-secondary: #4A5568;
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
             --bg-primary: #ffffff;
-            --bg-secondary: #F7FAFC;
+            --bg-secondary: #f8fafc;
+            --bg-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --accent: #22c55e;
+            --dark-bg-primary: #111827;
+            --dark-bg-secondary: #1f2937;
+            --dark-text-primary: #f3f4f6;
+            --dark-text-secondary: #d1d5db;
             --transition-speed: 0.3s;
         }
 
@@ -26,11 +33,167 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
+            background-color: #f8fafc;
+            color: #1f2937;
             line-height: 1.6;
+        }
+
+        /* Toolbar Styles */
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -55%); }
+        }
+
+        .toolbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0066FF;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .toolbar-item {
+            color: #4A5568;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .toolbar-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(129, 140, 248, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .toolbar-item i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .toolbar-item:hover {
+            color: var(--primary);
+        }
+
+        .toolbar-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .toolbar-item:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Summary Section */
+        .summary-section {
+            padding: 8rem 0;
+            background: var(--bg-gradient);
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .summary-header {
+            margin-bottom: 2rem;
+        }
+
+        .summary-header h1 {
+            font-size: 3rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .summary-header h2 {
+            font-size: 1.25rem;
+            color: var(--primary-light);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .summary-description {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
         }
 
         .container {
@@ -41,46 +204,267 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(125deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
             color: white;
-            padding: 6rem 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .header-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .header-bg::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.2)"/></svg>');
+            background-size: 30px 30px;
+            opacity: 0.3;
+            animation: float 15s ease-in-out infinite;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            animation: floatShape 20s linear infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+        }
+
+        .shape::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent);
+            z-index: -1;
+        }
+
+        .shape:nth-child(1) { width: 100px; height: 100px; top: 20%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: -5s; }
+        .shape:nth-child(3) { width: 80px; height: 80px; top: 40%; left: 60%; animation-delay: -10s; }
+        .shape:nth-child(4) { width: 120px; height: 120px; top: 80%; left: 30%; animation-delay: -15s; }
+
+        @keyframes floatShape {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-30px, 50px) rotate(240deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.1)" x="0" y="0" width="100" height="100"/></svg>');
+            opacity: 0.1;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
         }
 
         .header-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         header h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 4.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            letter-spacing: 2px;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -100% center; }
+            100% { background-position: 200% center; }
         }
 
         header h2 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            letter-spacing: 4px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header h2 .highlight {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h2 .highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            to {
+                left: 100%;
+            }
+        }
+
+        .main-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0;
+            letter-spacing: 6px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform-style: preserve-3d;
+            transform: perspective(1000px) translateZ(0);
+            transition: transform 0.3s ease;
+        }
+
+        header h2:hover {
+            transform: perspective(1000px) translateZ(30px);
+        }
+
+        header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
         }
 
         .header-description {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header-description:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Navigation */
         nav {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .nav-container {
@@ -90,17 +474,35 @@
         }
 
         .nav-link {
-            color: var(--text-primary);
+            color: #1f2937;
             text-decoration: none;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #4338ca;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 80%;
         }
 
         .nav-link:hover {
-            color: var(--primary-color);
-            background: rgba(117, 16, 247, 0.1);
+            color: #4338ca;
+            background: rgba(67, 56, 202, 0.1);
         }
 
         /* Sections */
@@ -109,11 +511,25 @@
         }
 
         .section-title {
-            font-size: 2rem;
-            color: var(--primary-color);
+            font-size: 2.5rem;
+            color: #4338ca;
             margin-bottom: 3rem;
             text-align: center;
             font-weight: 700;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #4338ca;
+            border-radius: 3px;
         }
 
         /* Contact Section */
@@ -127,16 +543,53 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            gap: 1.5rem;
+            padding: 1.5rem;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .contact-item i {
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: #4338ca;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-icon i {
             font-size: 1.5rem;
-            color: var(--primary-color);
+            color: white;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #1f2937;
+        }
+
+        .contact-details p {
+            color: #4b5563;
+            font-size: 1rem;
         }
 
         /* Social Links */
@@ -148,13 +601,13 @@
         }
 
         .social-link {
-            color: var(--text-primary);
+            color: #1f2937;
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
         .social-link:hover {
-            color: var(--primary-color);
+            color: #4338ca;
         }
 
         /* Skills Section */
@@ -179,7 +632,7 @@
 
         .skill-card i {
             font-size: 2rem;
-            color: var(--primary-color);
+            color: #4338ca;
             margin-bottom: 1rem;
         }
 
@@ -192,10 +645,18 @@
 
         .project-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 20px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform var(--transition-speed) ease;
+            transition: transform 0.3s ease;
         }
 
         .project-card:hover {
@@ -203,58 +664,103 @@
         }
 
         .project-content {
-            padding: 1.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             height: 100%;
+            gap: 1rem;
         }
 
         .project-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f2937;
+            position: relative;
+            display: inline-block;
             margin-bottom: 0.5rem;
-            color: var(--text-primary);
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #4338ca;
+            transition: width 0.3s ease;
+        }
+
+        .project-card:hover .project-title::after {
+            width: 100%;
         }
 
         .project-description {
-            color: var(--text-secondary);
+            color: #4b5563;
             margin-bottom: auto;
             flex-grow: 1;
         }
 
         .project-link {
-            display: inline-block;
-            color: var(--primary-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            background: #4338ca;
             text-decoration: none;
             font-weight: 500;
-            transition: color var(--transition-speed) ease;
-            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            margin-top: auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 56, 202, 0.2);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 56, 202, 0.3);
+        }
+
+        .project-link i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover i {
+            transform: translateX(4px);
         }
 
         /* Experience Section */
         .experience-item {
             background: white;
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem;
+            border-radius: 20px;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
 
         .experience-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--primary-color);
+            color: #4338ca;
             margin-bottom: 0.5rem;
         }
 
         .experience-company {
             font-weight: 500;
-            color: var(--text-secondary);
+            color: #4b5563;
             margin-bottom: 1rem;
         }
 
         .experience-description {
-            color: var(--text-secondary);
+            color: #4b5563;
         }
 
         /* Responsive Design */
@@ -272,34 +778,82 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: #4338ca;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
     </style>
 </head>
 <body>
-    <header data-aos="fade-down">
+
+    <div class="toolbar">
+        <div class="toolbar-nav">
+            <a href="#" class="logo">Ahmed Abdel ALIM</a>
+            <div class="nav-links">
+                <a href="#about" class="toolbar-item">ABOUT</a>
+                <a href="#experience" class="toolbar-item">EXPERIENCE</a>
+                <a href="#skills" class="toolbar-item">SKILLS</a>
+                <a href="#projects" class="toolbar-item">PROJECTS</a>
+                <a href="#education" class="toolbar-item">EDUCATION</a>
+                <a href="#contact" class="toolbar-item">CONTACT</a>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="summary-section">
         <div class="container">
-            <div class="header-content">
+            <div class="summary-header">
                 <h1>Ahmed Abdel ALIM</h1>
-                <h2>UI/UX DESIGNER</h2>
-                <p class="header-description">
+                <h2>Senior UI/UX Designer</h2>
+                <p class="summary-description">
                     UI/UX Designer with over 4 years of experience in creating user-friendly and visually engaging interfaces. 
                     Skilled in Figma, and Adobe XD with strong user research and prototyping abilities. 
                     Passionate about enhancing user experiences and solving complex design challenges.
                 </p>
             </div>
-        </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <div class="nav-container">
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#education" class="nav-link">Education</a>
+            <div class="social-links">
+                <a href="tel:+1234567890" class="social-link">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="mailto:contact@example.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </div>
-    </nav>
+    </section>
+
+
 
     <main>
         <section id="contact">
@@ -307,8 +861,10 @@
                 <h2 class="section-title" data-aos="fade-up">Contact</h2>
                 <div class="contact-info" data-aos="fade-up">
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
                             <h3>Phone</h3>
                             <p>0100 251 2011</p>
                         </div>
@@ -450,7 +1006,7 @@
                         <div class="project-content">
                             <h3 class="project-title">CAREK</h3>
                             <p class="project-description">Car washing and services</p>
-                            <a href="https://www.figma.com/design/qPnV8AAwKwkOdBriT98l6f/Carek?node-id=0-1&t=rcIdu7AnAENcvPT0-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/qPnV8AAwKwkOdBriT98l6f/Carek?node-id=0-1&t=rcIdu7AnAENcvPT0-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -458,7 +1014,7 @@
                         <div class="project-content">
                             <h3 class="project-title">Logisteam</h3>
                             <p class="project-description">For Bargains</p>
-                            <a href="https://www.figma.com/design/WFJPnZ7xjMtmFPxrFmQblK/Logissteam?node-id=0-1&t=pqsDVIwGm9ODWg6a-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/WFJPnZ7xjMtmFPxrFmQblK/Logissteam?node-id=0-1&t=pqsDVIwGm9ODWg6a-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -466,7 +1022,7 @@
                         <div class="project-content">
                             <h3 class="project-title">Fann</h3>
                             <p class="project-description">For car services</p>
-                            <a href="https://www.figma.com/design/eRIfk08ayxymYJkTl1flNL/Fann?node-id=0-1&t=MrK32rx2Y3ZDlVYR-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/eRIfk08ayxymYJkTl1flNL/Fann?node-id=0-1&t=MrK32rx2Y3ZDlVYR-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -474,7 +1030,7 @@
                         <div class="project-content">
                             <h3 class="project-title">Yamluck</h3>
                             <p class="project-description">E-commerce</p>
-                            <a href="https://www.figma.com/design/uVpMhpm4aeVKpZnSAlyATE/Yamluck?node-id=0-1&t=dOzHPnA7D6oft8L3-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/uVpMhpm4aeVKpZnSAlyATE/Yamluck?node-id=0-1&t=dOzHPnA7D6oft8L3-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -482,7 +1038,7 @@
                         <div class="project-content">
                             <h3 class="project-title">Bunny Box</h3>
                             <p class="project-description">E-commerce</p>
-                            <a href="https://www.figma.com/design/hhEe3zkijg4Vptk2nloS9X/Bunny-Boxx?node-id=0-1&t=iTOSI5ML5mkWWq47-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/hhEe3zkijg4Vptk2nloS9X/Bunny-Boxx?node-id=0-1&t=iTOSI5ML5mkWWq47-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -490,7 +1046,7 @@
                         <div class="project-content">
                             <h3 class="project-title">Funday</h3>
                             <p class="project-description">Kids Nursery</p>
-                            <a href="https://www.figma.com/design/0aprWBnGrIgOAVVZHugPdV/Fun-Day?node-id=0-1&t=aifEO7CKDhjgDK9q-1" target="_blank" class="project-link">View Design</a>
+                            <a href="https://www.figma.com/design/0aprWBnGrIgOAVVZHugPdV/Fun-Day?node-id=0-1&t=aifEO7CKDhjgDK9q-1" target="_blank" class="project-link">View Design <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -512,10 +1068,42 @@
         </section>
     </main>
 
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
+        // Initialize AOS
         AOS.init({
             duration: 800,
-            once: true
+            once: true,
+            offset: 100
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
